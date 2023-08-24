@@ -10,7 +10,10 @@
 * 	Template Style 
 *
 * ======================================================= */
+
+
 body {
+  height: 100%;
   font-family: "Space Mono", Arial, serif;
   font-weight: 400;
   font-size: 16px;
@@ -98,6 +101,7 @@ h1, h2, h3, h4, h5, h6, figure {
   background-attachment: fixed;
   position: relative;
   height: 600px;
+  min-height: 100vh;
   width: 100%;
 }
 #fh5co-header .overlay,
@@ -119,6 +123,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: table-cell;
   vertical-align: middle;
   height: 600px;
+  min-height: 100vh;
 }
 #fh5co-header .display-tc h1, #fh5co-header .display-tc h2, #fh5co-header .display-tc h3,
 .fh5co-cover .display-tc h1,
@@ -452,8 +457,18 @@ h1, h2, h3, h4, h5, h6, figure {
   left: 50%;
   margin-left: 0px;
 }
+.download-resume {
+  left:50%;
+  width: 200px;
+  margin-left:-100px;
+  text-align: center;
+}
 @media screen and (max-width: 768px) {
   .timeline:before {
+    margin-left: -64px;
+  }
+  .download-resume {
+    left: 85px;
     margin-left: -64px;
   }
 }
@@ -1300,5 +1315,4 @@ input[type="text"] {
 #fh5co-resume {
   background-color: #0084ff0e;
 }
-
 /*# sourceMappingURL=style.css.map */
