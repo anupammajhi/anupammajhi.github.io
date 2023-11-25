@@ -1,0 +1,21 @@
+name: Update Blogs
+
+on: workflow_dispatch
+
+jobs:
+  update_blogs:
+    runs-on: ubuntu-latest
+    name: Update Blog File
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: amajhi/update-file-action
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: |
+          cd action/src
+          npm install
+          npm list
+          node --version
