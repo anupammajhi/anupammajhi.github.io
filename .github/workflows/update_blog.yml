@@ -1,0 +1,27 @@
+name: Update Blogs
+
+on: workflow_dispatch
+
+jobs:
+  update_blogs:
+    runs-on: ubuntu-latest
+    name: Update Blog File
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # with:
+        #   ref: amajhi/update-file-action
+      - name: Install node20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          cd ./action
+          npm install
+          npm run build
+          npm start
+        name: Run script
+        env:
+          FILE_PATH: "test.md"
+          STARTING_COMMENT: "<!-- BLOG_AUTO_START -->"
+          ENDING_COMMENT: "<!-- BLOG_AUTO_END -->"
