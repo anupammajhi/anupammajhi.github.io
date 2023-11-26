@@ -4,7 +4,17 @@ while (counter < 6) {
      if (jsonData[index].coverImage) { %>
 <div class="col-md-4">
     <div class="fh5co-blog animate-box">
-        <a href="<%= jsonData[index].url %>" class="blog-bg" style="background-image: url(<%= jsonData[index].coverImage.url %>);"></a>
+        <%
+            let blogUrl = jsonData[index].url
+            let imageUrl = jsonData[index].coverImage.url
+            
+            const replacementUrl = "tech.anupamm.com"
+            const originalUrlSearchString = /anupammajhi\.hashnode\.dev/g
+
+            blogUrl = blogUrl.replace(originalUrlSearchString, replacementUrl)
+            imageUrl = imageUrl.replace(originalUrlSearchString, replacementUrl)
+        %>
+        <a href="<%= blogUrl %>" class="blog-bg" style="background-image: url(<%= imageUrl %>);"></a>
         <div class="blog-text">
             <% 
             let date = new Date(jsonData[index].publishedAt);
@@ -15,11 +25,11 @@ while (counter < 6) {
             });
             %>
             <span class="posted_on"><%= formattedDate %></span>
-            <h3><a href="<%= jsonData[index].url %>"><%= jsonData[index].title %></a></h3>
+            <h3><a href="<%= blogUrl %>"><%= jsonData[index].title %></a></h3>
             <p><%= jsonData[index].brief %></p>
             <ul class="stuff">
                 <li><i class="icon-eye2"></i><%= jsonData[index].views %></li>
-                <li><a href="<%= jsonData[index].url %>">Read More<i class="icon-arrow-right22"></i></a></li>
+                <li><a href="<%= blogUrl %>">Read More<i class="icon-arrow-right22"></i></a></li>
             </ul>
         </div> 
     </div>
