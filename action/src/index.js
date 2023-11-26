@@ -1,6 +1,7 @@
 const fs = require('fs')
 const { exec } = require('child_process')
 const path = require('path')
+const ejs = require('ejs')
 
 async function replaceSelectedText(fileOptions){
     const { filePath, startComment, endingComment } = fileOptions
@@ -19,19 +20,19 @@ async function replaceSelectedText(fileOptions){
     const updatedFileContent = fillContent(existingFileContent, fileOptions)
 
     try{
-        // console.log(updatedFileContent)
         fs.writeFileSync(filePath, updatedFileContent)
     }
     catch(e){
         console.error(e)
     }    
 
-    // console.log(fs.readFileSync(filePath, 'utf-8'))
     commitOptions = {
         filePath: filePath, 
         commitMessage: `Update file ${path.basename(filePath)}`
     }
-    await commitFile(commitOptions)
+
+    // console.log(fs.readFileSync(filePath, 'utf-8')) // For running locally
+    await commitFile(commitOptions) // For running in prod
 
 }
 
@@ -78,12 +79,17 @@ async function runExec(command){
 }
 
 async function main(){
-    // const templateOptions = {
-    //     inputJSON: process.env.INPUT_JSON,
-    //     template: process.env.FILL_TEMPLATE
-    // }
+    
+    let ejsTemplate
+    try {
+        ejsTemplate =  fs.readFileSync(process.env.EJS_TEMPLATE_PATH, 'utf-8')
+    }
+    catch(e) {
+        console.error(e)
+    }
 
-    let textToFill = "This is my blog"
+    const jsonData = JSON.parse(process.env.TEMPLATE_INPUT_JSON)
+    const textToFill = ejs.render(ejsTemplate, { jsonData })
 
     const fileOptions = {
         filePath: `${process.env.GITHUB_WORKSPACE}/${process.env.FILE_PATH}`,

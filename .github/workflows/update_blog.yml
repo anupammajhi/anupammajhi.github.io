@@ -9,8 +9,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        # with:
-        #   ref: amajhi/update-file-action
+      - name: Get Latest Hashnode Posts
+        id: latest_hashnode_posts
+        uses: anupammajhi/githubaction-latest-hashnode-posts@v0.0.3
+        with:
+          HASHNODE_PUBLICATION_ID: ${{ secrets.ANUPAMMAJHI_HASHNODE_PUB_ID }}
       - name: Install node20
         uses: actions/setup-node@v4
         with:
@@ -22,6 +25,9 @@ jobs:
           npm start
         name: Run script
         env:
-          FILE_PATH: "test.md"
+          FILE_PATH: "blogs.html"
           STARTING_COMMENT: "<!-- BLOG_AUTO_START -->"
           ENDING_COMMENT: "<!-- BLOG_AUTO_END -->"
+          EJS_TEMPLATE_PATH: "src/blogTemplate.ejs"
+          TEMPLATE_INPUT_JSON: ${{steps.latest_hashnode_posts.outputs.result}}
+          
