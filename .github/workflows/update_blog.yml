@@ -28,6 +28,6 @@ jobs:
           FILE_PATH: "blogs.html"
           STARTING_COMMENT: "<!-- BLOG_AUTO_START -->"
           ENDING_COMMENT: "<!-- BLOG_AUTO_END -->"
-          EJS_TEMPLATE_PATH: "src/blogTemplate.ejs"
+          EJS_TEMPLATE_PATH: "action/src/blogTemplate.ejs"
           TEMPLATE_INPUT_JSON: ${{steps.latest_hashnode_posts.outputs.result}}
           
