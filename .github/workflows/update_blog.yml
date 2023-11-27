@@ -21,13 +21,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: |
-          cd ./action
-          npm install
-          npm run build
-          npm start
-        name: Run script
-        env:
+      - name: Update File
+        id: update_file
+        uses: anupammajhi/githubaction-update-repo-file@v0.0.1
+        with:
           FILE_PATH: "blogs.html"
           STARTING_COMMENT: "<!-- BLOG_AUTO_START -->"
           ENDING_COMMENT: "<!-- BLOG_AUTO_END -->"
