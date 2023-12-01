@@ -3,7 +3,7 @@ name: Update Blogs
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '45 10 * * *'
+    - cron: '0 1 * * *'
 
 jobs:
   update_blogs:
