@@ -290,6 +290,10 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #000 !important;
 }
 
+#fh5co-blog .fh5co-heading {
+  margin-bottom: 0em;
+}
+
 #fh5co-about,
 #fh5co-resume,
 #fh5co-skills,
