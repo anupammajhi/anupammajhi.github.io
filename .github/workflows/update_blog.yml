@@ -19,7 +19,7 @@ jobs:
           HASHNODE_PUBLICATION_ID: ${{ secrets.ANUPAMMAJHI_HASHNODE_PUB_ID }}
       - name: Update File
         id: update_file
-        uses: anupammajhi/githubaction-update-repo-file@v1.0.1
+        uses: anupammajhi/githubaction-update-repo-file@v1.0.2
         with:
           FILE_PATH: "blogs.html"
           STARTING_COMMENT: "<!-- BLOG_AUTO_START -->"
