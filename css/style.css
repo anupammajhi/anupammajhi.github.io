@@ -1320,3 +1320,29 @@ input[type="text"] {
   background-color: #0084ff0e;
 }
 /*# sourceMappingURL=style.css.map */
+
+
+.highlight {
+	color: #3498db;
+	font-weight: bold;
+}
+
+.highlight-green {
+	color: #27ae60;
+	font-weight: bold;
+}
+
+.highlight-purple {
+	color: #9b59b6;
+	font-weight: bold;
+}
+
+.highlight-orange {
+	color: #e67e22;
+	font-weight: bold;
+}
+
+.highlight-brick {
+	color: #c53d38;
+	font-weight: bold;
+}
